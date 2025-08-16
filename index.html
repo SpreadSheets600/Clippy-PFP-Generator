@@ -136,6 +136,7 @@
 
     <div class="actions">
       <button id="randomize">🎲 Randomize</button>
+      <button id="clear">🗑️ Clear All</button>
       <button id="download">⬇️ Download PNG</button>
     </div>
 
@@ -292,6 +293,20 @@
     link.href = canvas.toDataURL("image/png");
     link.click();
   });
+
+    // Clear All
+  document.getElementById("clear").addEventListener("click", () => {
+    folders.forEach(folder => {
+      if (folder === "body") {
+        selections[folder] = options[folder][0]; // always pick first body
+      } else {
+        selections[folder] = null; // clear all others
+      }
+      updateSelectedThumbs(folder);
+    });
+    draw();
+  });
+
 </script>
 </body>
 </html>
