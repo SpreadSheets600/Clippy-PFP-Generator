@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Clippy PFP Generator - Change your profile picture to clippy</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f0f0f0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+    header {
+      background: #0078d7;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      width: 100%;
+    }
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem;
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .tab {
+      padding: 0.5rem 1rem;
+      background: white;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+    }
+    .tab.active {
+      background: #0078d7;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Thumbnails grid */
+    .thumbs {
+      display: none;
+      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+      gap: 0.5rem;
+      width: 100%;
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 6px rgba(0,0,0,0.15);
+      max-height: 250px;
+      overflow-y: auto;
+    }
+    .thumbs.active {
+      display: grid;
+    }
+    .thumb {
+      border: 2px solid transparent;
+      border-radius: 8px;
+      cursor: pointer;
+      background: #fafafa;
+      padding: 4px;
+      transition: 0.2s;
+    }
+    .thumb img {
+      width: 100%;
+      display: block;
+    }
+    .thumb:hover {
+      border-color: #0078d7;
+    }
+    .thumb.selected {
+      border-color: #0078d7;
+      background: #e6f0ff;
+    }
+
+    .canvas-wrapper {
+      background: white;
+      padding: 1rem;
+      border-radius: 12px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+    }
+    canvas {
+      width: 300px;
+      height: 300px;
+      display: block;
+    }
+    @media (max-width: 600px) {
+      canvas {
+        width: 200px;
+        height: 200px;
+      }
+    }
+    .actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    button {
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      border: none;
+      background: #0078d7;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #005fa3;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Clippy PFP Generator</h1>
+    <p>Make your Clippy profile picture/Clippy Avatar!</p>
+  </header>
+
+  <main>
+    <div class="canvas-wrapper">
+      <canvas id="preview" width="512" height="512"></canvas>
+    </div>
+
+    <div class="actions">
+      <button id="randomize">🎲 Randomize</button>
+      <button id="download">⬇️ Download PNG</button>
+    </div>
+
+    <div class="tabs" id="tabs"></div>
+    <div id="thumbs-container"></div>
+  </main>
+
+  <script>
+  const folders = ["bg", "body", "head", "eyes", "mouth", "hand", "deco"];
+  const selections = {}; // store selected file per folder (null means none)
+  let options = {};
+
+  const tabsContainer = document.getElementById("tabs");
+  const thumbsContainer = document.getElementById("thumbs-container");
+  const canvas = document.getElementById("preview");
+  const ctx = canvas.getContext("2d");
+
+  // Load manifest.json
+  fetch("manifest.json")
+    .then(res => res.json())
+    .then(data => {
+      options = data;
+      initUI();
+      initDefaults();
+      draw();
+    });
+
+  function initUI() {
+    folders.forEach((folder, idx) => {
+      // Create tab
+      const tab = document.createElement("div");
+      tab.className = "tab" + (idx === 0 ? " active" : "");
+      const emojiMap = {
+        bg: "🖼️",
+        body: "📎",
+        head: "😀",
+        eyes: "👀",
+        mouth: "👄",
+        hand: "✋",
+        deco: "✨"
+        };
+      tab.textContent = `${folder.toUpperCase()} ${emojiMap[folder]}`;
+      tab.dataset.folder = folder;
+      tab.addEventListener("click", () => switchTab(folder));
+      tabsContainer.appendChild(tab);
+
+      // Create thumbs grid
+      const grid = document.createElement("div");
+      grid.id = "thumbs-" + folder;
+      grid.className = "thumbs" + (idx === 0 ? " active" : "");
+
+      // Add "None" option for all EXCEPT body
+      if (folder !== "body") {
+        const noneThumb = document.createElement("div");
+        noneThumb.className = "thumb";
+        noneThumb.dataset.folder = folder;
+        noneThumb.dataset.file = "";
+        noneThumb.title = "None";
+        noneThumb.innerHTML = `<div style="width:100%;aspect-ratio:1/1;
+          background: repeating-conic-gradient(#ccc 0% 25%, #eee 0% 50%) 50% / 20px 20px;"></div>`;
+        noneThumb.addEventListener("click", () => {
+          selections[folder] = null;
+          updateSelectedThumbs(folder);
+          draw();
+        });
+        grid.appendChild(noneThumb);
+      }
+
+      // Actual asset thumbnails
+      options[folder].forEach(file => {
+        const wrapper = document.createElement("div");
+        wrapper.className = "thumb";
+        wrapper.dataset.folder = folder;
+        wrapper.dataset.file = file;
+        const img = new Image();
+        img.src = `assets/${folder}/${file}`;
+        wrapper.appendChild(img);
+        wrapper.addEventListener("click", () => {
+          selections[folder] = file;
+          updateSelectedThumbs(folder);
+          draw();
+        });
+        grid.appendChild(wrapper);
+      });
+      thumbsContainer.appendChild(grid);
+    });
+  }
+
+  function switchTab(folder) {
+    document.querySelectorAll(".tab").forEach(tab => {
+      tab.classList.toggle("active", tab.dataset.folder === folder);
+    });
+    document.querySelectorAll(".thumbs").forEach(grid => {
+      grid.classList.toggle("active", grid.id === "thumbs-" + folder);
+    });
+  }
+
+  function updateSelectedThumbs(folder) {
+    document.querySelectorAll(`#thumbs-${folder} .thumb`).forEach(thumb => {
+      const isSelected = (selections[folder] || "") === thumb.dataset.file;
+      thumb.classList.toggle("selected", isSelected);
+    });
+  }
+
+  function initDefaults() {
+    folders.forEach(folder => {
+      if (folder === "body") {
+        // Always require body: pick first available
+        selections[folder] = options[folder][0];
+      } else {
+        selections[folder] = null; // start as "None"
+      }
+      updateSelectedThumbs(folder);
+    });
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    const promises = folders.map(folder => {
+      const file = selections[folder];
+      if (!file) return null; // skip if "None"
+      return new Promise(res => {
+        const img = new Image();
+        img.src = `assets/${folder}/${file}`;
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+          res();
+        };
+      });
+    }).filter(Boolean);
+    Promise.all(promises);
+  }
+
+  // Randomize
+  document.getElementById("randomize").addEventListener("click", () => {
+    folders.forEach(folder => {
+      let opts;
+      if (folder === "body") {
+        opts = options[folder]; // body cannot be None
+      } else {
+        opts = [null, ...options[folder]];
+      }
+      const choice = opts[Math.floor(Math.random() * opts.length)];
+      selections[folder] = choice;
+      updateSelectedThumbs(folder);
+    });
+    draw();
+  });
+
+  // Download
+  document.getElementById("download").addEventListener("click", () => {
+    const link = document.createElement("a");
+    link.download = "clippy_pfp.png";
+    link.href = canvas.toDataURL("image/png");
+    link.click();
+  });
+</script>
+</body>
+</html>
