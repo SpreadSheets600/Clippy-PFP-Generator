@@ -1,368 +1,414 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clippy PFP Generator - Change your profile picture to clippy</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6LL3FGD40D"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-  
-    gtag('config', 'G-6LL3FGD40D');
-    </script>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8961022512973950"
-     crossorigin="anonymous"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f0f0f0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-    }
-    header {
-      background: #0078d7;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-      width: 100%;
-    }
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1rem;
-      padding: 1rem;
-      width: 100%;
-      max-width: 1000px;
-    }
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Clippy PFP Generator – Make your own Clippy Avatar</title>
+		<meta name="description" content="Generate a custom Clippy profile picture (PFP) by mixing & matching backgrounds, bodies, heads, eyes, hands, mouths, and decorations." />
+		<meta property="og:title" content="Clippy PFP Generator" />
+		<meta property="og:description" content="Make your Clippy avatar in seconds. Randomize, tweak, download." />
+		<meta property="og:type" content="website" />
+		<meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)" />
+		<!-- Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-6LL3FGD40D"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "G-6LL3FGD40D");
+		</script>
+		<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8961022512973950" crossorigin="anonymous"></script>
+		<!-- Tailwind CSS CDN (no build step) -->
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = {
+				darkMode: "class",
+				theme: {
+					extend: {
+						fontFamily: { sans: ["Inter", "system-ui", "Arial", "sans-serif"] },
+						boxShadow: { glow: "0 0 0 1px rgba(255,255,255,0.05), 0 2px 10px -2px rgba(0,0,0,0.4), 0 4px 32px -4px rgba(0,0,0,0.5)" },
+						backgroundImage: { checker: "repeating-conic-gradient(#d4d4d8 0% 25%, #f4f4f5 0% 50%)" },
+					},
+				},
+			};
+		</script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+		<!-- No custom CSS, all styling via Tailwind classes -->
+		<style>
+			@keyframes slideIn {
+				from {
+					opacity: 0;
+					transform: translateY(10px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		</style>
+	</head>
+	<body class="min-h-screen bg-gradient-to-br from-sky-100/80 via-white to-cyan-100/80 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 text-slate-800 dark:text-slate-200 font-sans antialiased selection:bg-sky-600/70 selection:text-white">
+		<header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-slate-200 dark:border-slate-800 shadow-sm">
+			<div class="max-w-4xl mx-auto px-4 py-3 flex items-center gap-4">
+				<div class="flex items-center gap-2 font-bold text-xl tracking-tight">
+					<span class="text-sky-500">📎</span>
+					<span>Clippy PFP Generator</span>
+				</div>
+				<div class="ml-auto flex items-center gap-2">
+					<button id="themeToggle" class="rounded-lg px-3 py-1.5 text-base font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" aria-label="Toggle dark mode">🌙</button>
+				</div>
+			</div>
+		</header>
 
-    /* Tabs */
-    .tabs {
-      display: flex;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .tab {
-      padding: 0.5rem 1rem;
-      background: white;
-      border-radius: 6px;
-      cursor: pointer;
-      border: 1px solid #ccc;
-    }
-    .tab.active {
-      background: #0078d7;
-      color: white;
-      font-weight: bold;
-    }
+		<main class="max-w-6xl mx-auto px-4 py-8 flex flex-col gap-8">
+			<!-- Hero -->
+			<section class="text-center max-w-3xl mx-auto flex flex-col gap-6">
+				<div class="flex items-center justify-center gap-3 mb-2">
+					<div class="w-12 h-12 rounded-xl flex items-center justify-center text-2xl shadow-lg">📎</div>
+					<h1 class="text-4xl sm:text-5xl font-black bg-gradient-to-r from-sky-600 via-sky-500 to-cyan-500 dark:from-sky-300 dark:via-cyan-300 dark:to-sky-200 bg-clip-text text-transparent">Clippy Builder</h1>
+				</div>
+				<p class="text-xl text-slate-600 dark:text-slate-400 leading-relaxed">Create your perfect Clippy avatar with our intuitive builder. Mix parts, randomize styles, and join the Clippy Movement!</p>
 
-    /* Thumbnails grid */
-    .thumbs {
-      display: none;
-      grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-      gap: 0.5rem;
-      width: 100%;
-      background: white;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 0 6px rgba(0,0,0,0.15);
-      max-height: 250px;
-      overflow-y: auto;
-    }
-    .thumbs.active {
-      display: grid;
-    }
-    .thumb {
-      border: 2px solid transparent;
-      border-radius: 8px;
-      cursor: pointer;
-      background: #fafafa;
-      padding: 4px;
-      transition: 0.2s;
-    }
-    .thumb img {
-      width: 100%;
-      display: block;
-    }
-    .thumb:hover {
-      border-color: #0078d7;
-    }
-    .thumb.selected {
-      border-color: #0078d7;
-      background: #e6f0ff;
-    }
+				<!-- Quick Actions Bar -->
+				<div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl border border-slate-200 dark:border-slate-700 p-4 shadow-lg">
+					<div class="flex gap-3 justify-center flex-wrap">
+						<button id="randomize" class="group inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-bold bg-gradient-to-r from-sky-600 to-sky-500 text-white hover:from-sky-500 hover:to-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"><span class="group-hover:animate-spin">🎲</span> Randomize</button>
+						<button id="clear" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-semibold bg-slate-100 text-slate-800 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200">🗑️ Reset</button>
+						<button id="download" class="group inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-bold bg-gradient-to-r from-cyan-600 to-cyan-500 text-white hover:from-cyan-500 hover:to-cyan-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"><span class="group-hover:animate-bounce">⬇️</span> Download PNG</button>
+					</div>
+				</div>
+			</section>
 
-    .canvas-wrapper {
-      background: white;
-      padding: 1rem;
-      border-radius: 12px;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
-    }
-    canvas {
-      width: 300px;
-      height: 300px;
-      display: block;
-    }
-    @media (max-width: 600px) {
-      canvas {
-        width: 200px;
-        height: 200px;
-      }
-    }
-    .actions {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    button {
-      padding: 0.6rem 1rem;
-      border-radius: 6px;
-      border: none;
-      background: #0078d7;
-      color: white;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #005fa3;
-    }
-    .video-section {
-      margin-top: 3rem;
-      text-align: center;
-      padding: 1rem;
-    }
+			<!-- Builder Layout -->
+			<section class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8 items-start">
+				<!-- Canvas & Preview Card -->
+				<div class="xl:col-span-1 flex flex-col gap-6">
+					<div class="relative group">
+						<div class="absolute -inset-2 rounded-3xl bg-gradient-to-br from-sky-400/30 via-cyan-300/30 to-sky-500/30 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-500"></div>
+						<div class="relative rounded-3xl bg-white/95 dark:bg-slate-800/95 shadow-2xl border border-slate-200/50 dark:border-slate-700/50 overflow-hidden">
+							<!-- Canvas Header -->
+							<div class="bg-gradient-to-r from-sky-50 to-cyan-50 dark:from-slate-800 dark:to-slate-700 px-6 py-4 border-b border-slate-200 dark:border-slate-700">
+								<h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 flex items-center gap-2">
+									<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+									Live Preview
+								</h3>
+								<p class="text-sm text-slate-600 dark:text-slate-400 mt-1">512×512 PNG • Layers stacked in order</p>
+							</div>
+							<!-- Canvas Container -->
+							<div class="p-6 sm:p-8 flex flex-col items-center gap-4">
+								<canvas id="preview" width="512" height="512" class="w-full max-w-[16rem] sm:max-w-[20rem] md:max-w-[22rem] aspect-square rounded-2xl ring-4 ring-sky-100 dark:ring-sky-900 bg-[repeating-conic-gradient(theme(colors.slate.200)_0%_25%,theme(colors.slate.50)_0%_50%)] [background-size:24px_24px] shadow-lg hover:shadow-2xl transition-shadow duration-300"></canvas>
+								<div class="flex gap-2 text-xs text-slate-500 dark:text-slate-400">
+									<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-full">Pixel Perfect</span>
+									<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-full">Transparent BG</span>
+								</div>
+							</div>
+						</div>
+					</div>
 
-    .video-section h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
+					<!-- (Tips card moved to full-width section below) -->
+				</div>
 
-    .video-container {
-      position: relative;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-      height: 0;
-      overflow: hidden;
-      max-width: 100%;
-    }
+				<!-- Builder Controls -->
+				<div class="xl:col-span-2 flex flex-col gap-6">
+					<!-- Category Tabs -->
+					<div class="bg-white/80 dark:bg-slate-800/80 backdrop-blur rounded-2xl border border-slate-200 dark:border-slate-700 p-6 shadow-lg">
+						<h3 class="font-bold text-xl text-slate-800 dark:text-slate-200 mb-4 flex items-center gap-2">🎨 Customize Parts</h3>
+						<nav id="tabs" class="flex flex-wrap gap-3" aria-label="Asset categories"></nav>
+					</div>
 
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-    }
+					<!-- Asset Thumbnails -->
+					<div id="thumbs-container" class="flex flex-col gap-6"></div>
+				</div>
+			</section>
 
-  </style>
-</head>
-<body>
-  <header>
-    <h1>Clippy PFP Generator</h1>
-    <p>Make your Clippy profile picture/Clippy Avatar!</p>
-  </header>
+			<!-- Pro Tips Full-Width Section -->
+			<section class="mt-10 rounded-3xl bg-gradient-to-br from-blue-50 via-indigo-50 to-sky-50 dark:from-slate-800/80 dark:via-slate-800/70 dark:to-slate-700/70 border border-blue-200/60 dark:border-slate-600 shadow-lg p-8">
+				<div class="max-w-5xl mx-auto">
+					<h3 class="text-2xl font-black text-blue-900 dark:text-blue-200 mb-4 flex items-center gap-3"><span>💡</span>Pro Tips</h3>
+					<ul class="grid sm:grid-cols-3 gap-6 text-sm">
+						<li class="flex items-start gap-3 bg-white/60 dark:bg-slate-700/40 rounded-xl p-4 border border-blue-200/50 dark:border-slate-600 backdrop-blur-sm shadow-sm">
+							<span class="text-blue-500">⌨️</span>
+							<span class="text-blue-900 dark:text-blue-200">Use shortcuts: <strong>R</strong> randomize, <strong>C</strong> clear</span>
+						</li>
+						<li class="flex items-start gap-3 bg-white/60 dark:bg-slate-700/40 rounded-xl p-4 border border-blue-200/50 dark:border-slate-600 backdrop-blur-sm shadow-sm">
+							<span class="text-blue-500">➡️</span>
+							<span class="text-blue-900 dark:text-blue-200">Use arrow keys to switch part categories quickly</span>
+						</li>
+						<li class="flex items-start gap-3 bg-white/60 dark:bg-slate-700/40 rounded-xl p-4 border border-blue-200/50 dark:border-slate-600 backdrop-blur-sm shadow-sm">
+							<span class="text-blue-500">🧩</span>
+							<span class="text-blue-900 dark:text-blue-200">Body required; all other layers are optional — experiment!</span>
+						</li>
+					</ul>
+				</div>
+			</section>
 
-  <main>
-    <div class="canvas-wrapper">
-      <canvas id="preview" width="512" height="512"></canvas>
-    </div>
+			<!-- Video Section -->
+			<section class="rounded-3xl bg-gradient-to-br from-violet-50 to-purple-50 dark:from-slate-800/80 dark:to-slate-700/80 border border-violet-200 dark:border-slate-600 shadow-xl p-8 flex flex-col gap-6 mt-8">
+				<div class="text-center">
+					<h3 class="mx-2 sm:mx-6 text-lg sm:text-xl md:text-2xl font-black text-violet-900 dark:text-violet-200 mb-3 flex items-center justify-center gap-2 sm:gap-3">
+						<span class="animate-bounce">🤔</span>
+						<span>Why is everyone changing their profile picture to Clippy and why you should too!</span>
+					</h3>
+				</div>
+				<div class="relative w-full overflow-hidden rounded-2xl aspect-video ring-2 ring-violet-200 dark:ring-violet-800 shadow-2xl hover:shadow-3xl transition-shadow duration-300">
+					<iframe class="w-full h-full" src="https://www.youtube.com/embed/2_Dtmpe9qaQ" title="Why everyone is changing to Clippy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+				</div>
+			</section>
+		</main>
 
-    <div class="actions">
-      <button id="randomize">🎲 Randomize</button>
-      <button id="clear">🗑️ Clear All</button>
-      <button id="download">⬇️ Download PNG</button>
-    </div>
+		<footer class="py-10 text-center text-xs text-slate-500 dark:text-slate-500 flex flex-col gap-2 mt-8">
+			<p>Built with nostalgia • Not affiliated with Microsoft • PNG assets layered client-side</p>
+		</footer>
 
-    <div class="tabs" id="tabs"></div>
-    <div id="thumbs-container"></div>
-  </main>
+		<script>
+			(() => {
+				const folders = ["bg", "body", "head", "eyes", "mouth", "hand", "deco"];
+				const emojiMap = { bg: "🖼️", body: "📎", head: "😀", eyes: "👀", mouth: "👄", hand: "✋", deco: "✨" };
+				const selections = {};
+				let options = {};
+				const state = { activeFolder: folders[0] };
 
-  <section class="video-section">
-    <h2>🤔 Why is everyone changing their profile picture to Clippy and why you should too</h2>
-    <div class="video-container">
-      <iframe 
-        width="560" 
-        height="315" 
-        src="https://www.youtube.com/embed/2_Dtmpe9qaQ" 
-        title="Why is everyone changing their profile picture to Clippy and why you should too" 
-        frameborder="0" 
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-        allowfullscreen>
-      </iframe>
-    </div>
-  </section>
+				const canvas = document.getElementById("preview");
+				const ctx = canvas.getContext("2d");
+				const tabsEl = document.getElementById("tabs");
+				const clearBtn = document.getElementById("clear");
+				const downloadBtn = document.getElementById("download");
+				const randomizeBtn = document.getElementById("randomize");
+				const themeToggle = document.getElementById("themeToggle");
+				const panelsEl = document.getElementById("thumbs-container");
 
-  <script>
-  const folders = ["bg", "body", "head", "eyes", "mouth", "hand", "deco"];
-  const selections = {}; // store selected file per folder (null means none)
-  let options = {};
+				const THEME_KEY = "clippy_theme";
+				function applyTheme(t) {
+					const root = document.documentElement;
+					const isDark = t === "dark" || (t === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
+					root.classList.toggle("dark", isDark);
+					themeToggle.textContent = isDark ? "☀️" : "🌙";
+					localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
+				}
+				themeToggle.addEventListener("click", () => {
+					applyTheme(document.documentElement.classList.contains("dark") ? "light" : "dark");
+				});
+				applyTheme(localStorage.getItem(THEME_KEY) || "auto");
 
-  const tabsContainer = document.getElementById("tabs");
-  const thumbsContainer = document.getElementById("thumbs-container");
-  const canvas = document.getElementById("preview");
-  const ctx = canvas.getContext("2d");
+				fetch("manifest.json")
+					.then((r) => r.json())
+					.then((data) => {
+						options = data;
+						init();
+					})
+					.catch((err) => {
+						console.error("Failed to load manifest:", err);
+						panelsEl.innerHTML = '<div class="text-red-600 dark:text-red-400">Error loading assets manifest.</div>';
+					});
 
-  // Load manifest.json
-  fetch("manifest.json")
-    .then(res => res.json())
-    .then(data => {
-      options = data;
-      initUI();
-      initDefaults();
-      draw();
-    });
+				function init() {
+					initDefaults();
+					renderTabs();
+					renderPanels();
+					draw();
+				}
 
-  function initUI() {
-    folders.forEach((folder, idx) => {
-      // Create tab
-      const tab = document.createElement("div");
-      tab.className = "tab" + (idx === 0 ? " active" : "");
-      const emojiMap = {
-        bg: "🖼️",
-        body: "📎",
-        head: "😀",
-        eyes: "👀",
-        mouth: "👄",
-        hand: "✋",
-        deco: "✨"
-        };
-      tab.textContent = `${folder.toUpperCase()} ${emojiMap[folder]}`;
-      tab.dataset.folder = folder;
-      tab.addEventListener("click", () => switchTab(folder));
-      tabsContainer.appendChild(tab);
+				function initDefaults() {
+					folders.forEach((f) => (selections[f] = f === "body" ? options[f][0] : null));
+				}
 
-      // Create thumbs grid
-      const grid = document.createElement("div");
-      grid.id = "thumbs-" + folder;
-      grid.className = "thumbs" + (idx === 0 ? " active" : "");
+				// ---------- UI helper class builders ----------
+				function tabClass(folder, active) {
+					const base = "group inline-flex items-center gap-1.5 rounded-lg px-3.5 py-1.5 text-xs md:text-sm font-semibold tracking-wide transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400";
+					if (active) return base + " bg-sky-600 text-white shadow-sm ring-1 ring-sky-500 scale-[1.05]";
+					return base + " bg-slate-100/80 dark:bg-slate-700/70 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-600 hover:shadow";
+				}
 
-      // Add "None" option for all EXCEPT body
-      if (folder !== "body") {
-        const noneThumb = document.createElement("div");
-        noneThumb.className = "thumb";
-        noneThumb.dataset.folder = folder;
-        noneThumb.dataset.file = "";
-        noneThumb.title = "None";
-        noneThumb.innerHTML = `<div style="width:100%;aspect-ratio:1/1;
-          background: repeating-conic-gradient(#ccc 0% 25%, #eee 0% 50%) 50% / 20px 20px;"></div>`;
-        noneThumb.addEventListener("click", () => {
-          selections[folder] = null;
-          updateSelectedThumbs(folder);
-          draw();
-        });
-        grid.appendChild(noneThumb);
-      }
+				function thumbClass(folder, selected) {
+					const base = `thumb-tile group relative aspect-square flex items-center justify-center rounded-xl border-2 transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400`;
+					if (selected) return base + " border-sky-500 dark:border-sky-400 bg-sky-50 dark:bg-sky-900/20 ring-4 ring-sky-200 dark:ring-sky-800 shadow-xl scale-105";
+					return base + " border-slate-300 dark:border-slate-600 bg-slate-50 dark:bg-slate-800/60 hover:border-sky-400 dark:hover:border-sky-500 hover:shadow-lg hover:scale-105";
+				}
 
-      // Actual asset thumbnails
-      options[folder].forEach(file => {
-        const wrapper = document.createElement("div");
-        wrapper.className = "thumb";
-        wrapper.dataset.folder = folder;
-        wrapper.dataset.file = file;
-        const img = new Image();
-        img.src = `assets/${folder}/${file}`;
-        wrapper.appendChild(img);
-        wrapper.addEventListener("click", () => {
-          selections[folder] = file;
-          updateSelectedThumbs(folder);
-          draw();
-        });
-        grid.appendChild(wrapper);
-      });
-      thumbsContainer.appendChild(grid);
-    });
-  }
+				function renderTabs() {
+					tabsEl.innerHTML = "";
+					folders.forEach((f) => {
+						const active = f === state.activeFolder;
+						const btn = document.createElement("button");
+						btn.type = "button";
+						btn.className = tabClass(f, active);
+						btn.setAttribute("role", "tab");
+						btn.setAttribute("aria-selected", active);
+						btn.dataset.folder = f;
+						const emoji = document.createElement("span");
+						emoji.textContent = emojiMap[f];
+						emoji.className = active ? "animate-pulse" : "group-hover:animate-bounce";
+						const label = document.createElement("span");
+						label.textContent = f.charAt(0).toUpperCase() + f.slice(1);
+						btn.append(emoji, label);
+						btn.addEventListener("click", () => switchFolder(f));
+						tabsEl.appendChild(btn);
+					});
+				}
 
-  function switchTab(folder) {
-    document.querySelectorAll(".tab").forEach(tab => {
-      tab.classList.toggle("active", tab.dataset.folder === folder);
-    });
-    document.querySelectorAll(".thumbs").forEach(grid => {
-      grid.classList.toggle("active", grid.id === "thumbs-" + folder);
-    });
-  }
+				function renderPanels() {
+					panelsEl.innerHTML = "";
+					folders.forEach((f) => {
+						const wrapper = document.createElement("div");
+						wrapper.className = `bg-white/90 dark:bg-slate-800/90 backdrop-blur rounded-2xl border border-slate-200 dark:border-slate-700 shadow-lg overflow-hidden ${f === state.activeFolder ? "" : "hidden"}`;
+						const header = document.createElement("div");
+						header.className = "bg-gradient-to-r from-slate-50 to-slate-100 dark:from-slate-700 dark:to-slate-600 px-5 py-3 border-b border-slate-200 dark:border-slate-600";
+						header.innerHTML = `<h4 class='font-semibold text-sm md:text-base text-slate-800 dark:text-slate-200 flex items-center gap-2'><span>${emojiMap[f]}</span><span>${f.charAt(0).toUpperCase() + f.slice(1)} Options</span><span class='ml-auto text-xs font-normal text-slate-500 dark:text-slate-400'>${options[f] ? options[f].length + (f !== "body" ? 1 : 0) : 0} choices</span></h4>`;
+						const panel = document.createElement("div");
+						panel.id = `panel-${f}`;
+						panel.setAttribute("role", "tabpanel");
+						panel.className = "thumbs grid gap-6 grid-cols-2 sm:grid-cols-3 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 max-h-[20rem] overflow-y-auto p-6";
+						if (f !== "body") panel.appendChild(createThumb({ folder: f, file: null }));
+						if (options[f]) options[f].forEach((file) => panel.appendChild(createThumb({ folder: f, file })));
+						wrapper.append(header, panel);
+						panelsEl.appendChild(wrapper);
+					});
+				}
 
-  function updateSelectedThumbs(folder) {
-    document.querySelectorAll(`#thumbs-${folder} .thumb`).forEach(thumb => {
-      const isSelected = (selections[folder] || "") === thumb.dataset.file;
-      thumb.classList.toggle("selected", isSelected);
-    });
-  }
+				function createThumb({ folder, file }) {
+					const tile = document.createElement("button");
+					tile.type = "button";
+					const selected = (selections[folder] || "") === (file || "");
+					tile.className = thumbClass(folder, selected);
+					tile.dataset.folder = folder;
+					tile.dataset.file = file || "";
+					tile.setAttribute("data-selected", selected);
+					tile.setAttribute("aria-label", file ? `${folder} asset ${file}` : `${folder} none`);
+					tile.title = file || "None";
+					if (!file) {
+						const noneBox = document.createElement("div");
+						noneBox.className = "w-full h-full bg-[repeating-conic-gradient(theme(colors.slate.300)_0%_25%,theme(colors.slate.100)_0%_50%)] dark:bg-[repeating-conic-gradient(theme(colors.slate.600)_0%_25%,theme(colors.slate.700)_0%_50%)] [background-size:16px_16px] rounded-lg flex items-center justify-center";
+						noneBox.innerHTML = '<span class="text-slate-400 dark:text-slate-500 text-xs font-semibold">NONE</span>';
+						tile.appendChild(noneBox);
+					} else {
+						const imgWrap = document.createElement("div");
+						imgWrap.className = "w-full h-full p-4 flex items-center justify-center";
+						const img = new Image();
+						img.decoding = "async";
+						img.loading = "lazy";
+						img.src = `assets/${folder}/${file}`;
+						img.alt = `${folder} - ${file}`;
+						img.className = "max-w-full max-h-full object-contain pointer-events-none select-none group-hover:scale-125 transition-transform duration-300";
+						imgWrap.appendChild(img);
+						tile.appendChild(imgWrap);
+						const indicator = document.createElement("div");
+						indicator.className = `absolute -top-1 -right-1 w-6 h-6 rounded-full ${selected ? "bg-sky-500 text-white" : "bg-slate-300 text-slate-600 opacity-0 group-hover:opacity-100"} flex items-center justify-center text-xs font-bold transition-all duration-200`;
+						indicator.innerHTML = selected ? "✓" : "+";
+						tile.appendChild(indicator);
+					}
+					tile.addEventListener("click", () => {
+						selections[folder] = file;
+						updateSelectionUI(folder);
+						draw();
+					});
+					return tile;
+				}
 
-  function initDefaults() {
-    folders.forEach(folder => {
-      if (folder === "body") {
-        // Always require body: pick first available
-        selections[folder] = options[folder][0];
-      } else {
-        selections[folder] = null; // start as "None"
-      }
-      updateSelectedThumbs(folder);
-    });
-  }
+				function updateSelectionUI(folder) {
+					document.querySelectorAll(`.thumb-tile[data-folder='${folder}']`).forEach((el) => {
+						const file = el.dataset.file || "";
+						const sel = (selections[folder] || "") === file;
+						el.className = thumbClass(folder, sel);
+						el.setAttribute("data-selected", sel);
+						const indicator = el.querySelector(".absolute");
+						if (indicator) {
+							indicator.className = `absolute -top-1 -right-1 w-6 h-6 rounded-full ${sel ? "bg-sky-500 text-white" : "bg-slate-300 text-slate-600 opacity-0 group-hover:opacity-100"} flex items-center justify-center text-xs font-bold transition-all duration-200`;
+							indicator.innerHTML = sel ? "✓" : "+";
+						}
+					});
+				}
 
-  function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    const promises = folders.map(folder => {
-      const file = selections[folder];
-      if (!file) return null; // skip if "None"
-      return new Promise(res => {
-        const img = new Image();
-        img.src = `assets/${folder}/${file}`;
-        img.onload = () => {
-          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-          res();
-        };
-      });
-    }).filter(Boolean);
-    Promise.all(promises);
-  }
+				function switchFolder(folder) {
+					state.activeFolder = folder;
+					document.querySelectorAll('#tabs [role="tab"]').forEach((tab) => {
+						const active = tab.dataset.folder === folder;
+						tab.setAttribute("aria-selected", active);
+						tab.className = tabClass(tab.dataset.folder, active);
+						const emoji = tab.querySelector("span");
+						if (emoji) emoji.className = active ? "animate-pulse" : "group-hover:animate-bounce";
+					});
+					document.querySelectorAll('[role="tabpanel"]').forEach((panel) => {
+						const wrap = panel.parentElement;
+						const active = panel.id === `panel-${folder}`;
+						wrap.classList.toggle("hidden", !active);
+						if (active) wrap.style.animation = "slideIn .25s ease-out";
+					});
+				}
 
-  // Randomize
-  document.getElementById("randomize").addEventListener("click", () => {
-    folders.forEach(folder => {
-      let opts;
-      if (folder === "body") {
-        opts = options[folder]; // body cannot be None
-      } else {
-        opts = [null, ...options[folder]];
-      }
-      const choice = opts[Math.floor(Math.random() * opts.length)];
-      selections[folder] = choice;
-      updateSelectedThumbs(folder);
-    });
-    draw();
-  });
+				function draw() {
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					(async () => {
+						for (const folder of folders) {
+							const file = selections[folder];
+							if (!file) continue;
+							await loadAndDraw(`assets/${folder}/${file}`);
+						}
+					})();
+				}
 
-  // Download
-  document.getElementById("download").addEventListener("click", () => {
-    const link = document.createElement("a");
-    link.download = "clippy_pfp.png";
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  });
+				function loadAndDraw(src) {
+					return new Promise((resolve, reject) => {
+						const img = new Image();
+						img.onload = () => {
+							ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+							resolve();
+						};
+						img.onerror = reject;
+						img.src = src;
+					});
+				}
 
-    // Clear All
-  document.getElementById("clear").addEventListener("click", () => {
-    folders.forEach(folder => {
-      if (folder === "body") {
-        selections[folder] = options[folder][0]; // always pick first body
-      } else {
-        selections[folder] = null; // clear all others
-      }
-      updateSelectedThumbs(folder);
-    });
-    draw();
-  });
+				function randomChoice(arr) {
+					return arr[Math.floor(Math.random() * arr.length)];
+				}
 
-</script>
-</body>
+				randomizeBtn.addEventListener("click", () => {
+					folders.forEach((f) => {
+						if (f === "body") {
+							selections[f] = randomChoice(options[f]);
+						} else {
+							const opts = [null, ...options[f]];
+							selections[f] = randomChoice(opts);
+						}
+						updateSelectionUI(f);
+					});
+					draw();
+				});
 
+				clearBtn.addEventListener("click", () => {
+					folders.forEach((f) => (selections[f] = f === "body" ? options[f][0] : null));
+					folders.forEach(updateSelectionUI);
+					draw();
+				});
+
+				downloadBtn.addEventListener("click", () => {
+					const a = document.createElement("a");
+					a.download = `clippy_pfp_${Date.now()}.png`;
+					a.href = canvas.toDataURL("image/png");
+					a.click();
+				});
+
+				document.addEventListener("keydown", (e) => {
+					if (e.target.closest("input,textarea")) return;
+					if (e.key === "r") {
+						randomizeBtn.click();
+					}
+					if (e.key === "c") {
+						clearBtn.click();
+					}
+					if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+						const idx = folders.indexOf(state.activeFolder);
+						const delta = e.key === "ArrowRight" ? 1 : -1;
+						const next = folders[(idx + delta + folders.length) % folders.length];
+						switchFolder(next);
+					}
+				});
+			})();
+		</script>
+	</body>
 </html>
