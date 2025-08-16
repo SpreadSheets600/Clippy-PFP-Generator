@@ -56,12 +56,11 @@
 		<header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-slate-200 dark:border-slate-800 shadow-sm">
 			<div class="max-w-4xl mx-auto px-4 py-3 flex items-center gap-4">
 				<div class="flex items-center gap-2 font-bold text-xl tracking-tight">
-					<span class="text-sky-500 animate-bounce">📎</span>
+					<span class="text-sky-500">📎</span>
 					<span>Clippy PFP Generator</span>
 				</div>
 				<div class="ml-auto flex items-center gap-2">
 					<button id="themeToggle" class="rounded-lg px-3 py-1.5 text-base font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400" aria-label="Toggle dark mode">🌙</button>
-					<a href="https://github.com/Utkarsh-username/Clippy-PFP-Generator" target="_blank" rel="noopener" class="rounded-lg px-3 py-1.5 text-base font-medium bg-sky-600 text-white hover:bg-sky-500 shadow focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sky-500 dark:focus:ring-offset-slate-900 transition">GitHub</a>
 				</div>
 			</div>
 		</header>
@@ -78,7 +77,7 @@
 				<!-- Quick Actions Bar -->
 				<div class="bg-white/70 dark:bg-slate-800/70 backdrop-blur rounded-2xl border border-slate-200 dark:border-slate-700 p-4 shadow-lg">
 					<div class="flex gap-3 justify-center flex-wrap">
-						<button id="randomize" class="group inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-bold bg-gradient-to-r from-sky-600 to-sky-500 text-white hover:from-sky-500 hover:to-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"><span class="group-hover:animate-spin">🎲</span> Randomize All</button>
+						<button id="randomize" class="group inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-bold bg-gradient-to-r from-sky-600 to-sky-500 text-white hover:from-sky-500 hover:to-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"><span class="group-hover:animate-spin">🎲</span> Randomize</button>
 						<button id="clear" class="inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-semibold bg-slate-100 text-slate-800 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200">🗑️ Reset</button>
 						<button id="download" class="group inline-flex items-center gap-2 rounded-xl px-6 py-3 text-base font-bold bg-gradient-to-r from-cyan-600 to-cyan-500 text-white hover:from-cyan-500 hover:to-cyan-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"><span class="group-hover:animate-bounce">⬇️</span> Download PNG</button>
 					</div>
@@ -86,7 +85,7 @@
 			</section>
 
 			<!-- Builder Layout -->
-			<section class="grid xl:grid-cols-3 lg:grid-cols-2 gap-8 items-start">
+			<section class="grid xl:grid-cols-3 lg:grid-cols-2 md:grid-cols-2 gap-8 items-start">
 				<!-- Canvas & Preview Card -->
 				<div class="xl:col-span-1 flex flex-col gap-6">
 					<div class="relative group">
@@ -101,8 +100,8 @@
 								<p class="text-sm text-slate-600 dark:text-slate-400 mt-1">512×512 PNG • Layers stacked in order</p>
 							</div>
 							<!-- Canvas Container -->
-							<div class="p-8 flex flex-col items-center gap-4">
-								<canvas id="preview" width="512" height="512" class="w-80 h-80 rounded-2xl ring-4 ring-sky-100 dark:ring-sky-900 bg-[repeating-conic-gradient(theme(colors.slate.200)_0%_25%,theme(colors.slate.50)_0%_50%)] [background-size:24px_24px] shadow-lg hover:shadow-2xl transition-shadow duration-300"></canvas>
+							<div class="p-6 sm:p-8 flex flex-col items-center gap-4">
+								<canvas id="preview" width="512" height="512" class="w-full max-w-[16rem] sm:max-w-[20rem] md:max-w-[22rem] aspect-square rounded-2xl ring-4 ring-sky-100 dark:ring-sky-900 bg-[repeating-conic-gradient(theme(colors.slate.200)_0%_25%,theme(colors.slate.50)_0%_50%)] [background-size:24px_24px] shadow-lg hover:shadow-2xl transition-shadow duration-300"></canvas>
 								<div class="flex gap-2 text-xs text-slate-500 dark:text-slate-400">
 									<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-full">Pixel Perfect</span>
 									<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-full">Transparent BG</span>
@@ -134,7 +133,7 @@
 					<ul class="grid sm:grid-cols-3 gap-6 text-sm">
 						<li class="flex items-start gap-3 bg-white/60 dark:bg-slate-700/40 rounded-xl p-4 border border-blue-200/50 dark:border-slate-600 backdrop-blur-sm shadow-sm">
 							<span class="text-blue-500">⌨️</span>
-							<span class="text-blue-900 dark:text-blue-200">Use shortcuts: <strong>R</strong> randomize, <strong>D</strong> download, <strong>C</strong> clear</span>
+							<span class="text-blue-900 dark:text-blue-200">Use shortcuts: <strong>R</strong> randomize, <strong>C</strong> clear</span>
 						</li>
 						<li class="flex items-start gap-3 bg-white/60 dark:bg-slate-700/40 rounded-xl p-4 border border-blue-200/50 dark:border-slate-600 backdrop-blur-sm shadow-sm">
 							<span class="text-blue-500">➡️</span>
@@ -164,7 +163,6 @@
 
 		<footer class="py-10 text-center text-xs text-slate-500 dark:text-slate-500 flex flex-col gap-2 mt-8">
 			<p>Built with nostalgia • Not affiliated with Microsoft • PNG assets layered client-side</p>
-			<p>Star the project on GitHub if you enjoyed it ✨</p>
 		</footer>
 
 		<script>
@@ -399,9 +397,6 @@
 					if (e.target.closest("input,textarea")) return;
 					if (e.key === "r") {
 						randomizeBtn.click();
-					}
-					if (e.key === "d") {
-						downloadBtn.click();
 					}
 					if (e.key === "c") {
 						clearBtn.click();
