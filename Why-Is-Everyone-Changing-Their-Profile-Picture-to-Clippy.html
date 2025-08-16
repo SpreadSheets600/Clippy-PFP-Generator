@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Why Everyone Is Changing Their Profile Picture to Clippy – Clippy PFP Movement</title>
+		<meta name="description" content="Learn why people across the internet are switching their profile pictures to Clippy and how to join the movement with the Clippy PFP Generator." />
+		<meta property="og:title" content="The Clippy PFP Movement" />
+		<meta property="og:description" content="A nostalgic, humorous protest against exploitative modern tech. Generate your own Clippy avatar and join in." />
+		<meta property="og:type" content="article" />
+		<meta name="theme-color" content="#0ea5e9" media="(prefers-color-scheme: light)" />
+		<meta name="theme-color" content="#0c4a6e" media="(prefers-color-scheme: dark)" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			tailwind.config = { darkMode: "class", theme: { extend: { fontFamily: { sans: ["Inter", "system-ui", "Arial", "sans-serif"] } } } };
+		</script>
+		<style>
+			h1 span.gradient {
+				background: linear-gradient(to right, var(--tw-gradient-stops));
+				-webkit-background-clip: text;
+				background-clip: text;
+				color: transparent;
+			}
+		</style>
+	</head>
+	<body class="min-h-screen bg-gradient-to-br from-sky-100/70 via-white to-cyan-100/60 dark:from-slate-900 dark:via-slate-950 dark:to-slate-900 text-slate-800 dark:text-slate-200 font-sans antialiased selection:bg-sky-600/70 selection:text-white">
+		<div id="progressBar" class="fixed top-0 left-0 h-1 bg-gradient-to-r from-sky-500 via-cyan-400 to-sky-600 w-0 z-50 transition-[width] duration-150"></div>
+		<header class="sticky top-0 z-40 bg-white/80 dark:bg-slate-900/80 backdrop-blur border-b border-slate-200 dark:border-slate-800">
+			<div class="max-w-4xl mx-auto px-4 py-3 flex items-center gap-4">
+				<a href="./index.html" class="flex items-center gap-2 font-bold text-lg tracking-tight text-slate-800 dark:text-slate-100">
+					<span class="text-sky-500">📎</span>
+					<span>Clippy PFP Generator</span>
+				</a>
+				<nav class="ml-auto flex items-center gap-3 text-sm">
+					<a href="./index.html" class="px-3 py-1.5 rounded-md bg-sky-600 text-white hover:bg-sky-500 font-medium">Generator</a>
+				</nav>
+				<button id="themeToggle" aria-label="Toggle dark mode" class="ml-1 rounded-md px-3 py-1.5 text-sm font-medium bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400">🌙</button>
+			</div>
+		</header>
+		<main class="max-w-6xl mx-auto px-2 sm:px-6 md:px-10 py-0">
+			<!-- Hero Section -->
+			<section class="flex flex-col items-center justify-center text-center py-6 sm:py-8 md:py-10 mb-6">
+				<div class="w-full max-w-full mx-auto bg-white/95 dark:bg-slate-900/95 rounded-2xl shadow-lg border border-sky-100 dark:border-slate-800 px-4 sm:px-8 py-6 sm:py-8 flex flex-col items-center gap-2">
+					<span class="text-4xl sm:text-5xl select-none mb-1">📎</span>
+					<h1 class="text-2xl sm:text-3xl md:text-4xl font-black bg-gradient-to-r from-sky-600 via-sky-500 to-cyan-500 dark:from-sky-300 dark:via-cyan-300 dark:to-sky-200 bg-clip-text text-transparent tracking-tight leading-tight mb-1">Why Is Everyone Changing Their Profile Picture to Clippy?</h1>
+					<div class="flex flex-wrap items-center justify-center gap-2 text-xs font-medium uppercase tracking-wider text-sky-600 dark:text-sky-400 mb-1">
+						<span class="px-2 py-0.5 rounded-full bg-sky-100 dark:bg-sky-900/40 text-sky-700 dark:text-sky-300">Article</span>
+						<span id="readingTime" class="px-2 py-0.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">--</span>
+					</div>
+					<p class="max-w-2xl mx-auto text-base sm:text-lg text-slate-600 dark:text-slate-300 font-normal mt-1">How a nostalgic paperclip became a symbol of digital resistance, and how you can join the movement.</p>
+				</div>
+			</section>
+			<div class="grid lg:grid-cols-[minmax(0,1fr)_18rem] gap-8 md:gap-12">
+				<article
+					class="prose prose-sky dark:prose-invert max-w-none prose-headings:tracking-tight prose-headings:font-extrabold bg-white/95 dark:bg-slate-900/95 rounded-2xl shadow-lg border border-sky-100 dark:border-slate-800 px-2 sm:px-7 py-6 sm:py-8 md:py-10 mb-10 prose-p:my-6 prose-p:leading-relaxed prose-ul:my-6 prose-ol:my-6 prose-li:pl-1 prose-li:mb-2 prose-hr:my-12 prose-blockquote:my-8 prose-blockquote:border-l-4 prose-blockquote:border-sky-300 dark:prose-blockquote:border-sky-700 prose-blockquote:bg-sky-50/60 dark:prose-blockquote:bg-slate-800/60 prose-blockquote:py-2 prose-blockquote:px-4"
+				>
+					<p class="lead text-lg sm:text-xl font-normal leading-relaxed mb-6">
+						If you’ve been on YouTube, Twitter, or Reddit lately, you may have noticed a sudden wave of profile pictures featuring <strong>Clippy</strong>, the nostalgic Microsoft Office assistant. <br /><br />
+						The little paperclip, officially known as <em>Clippit</em> (but fondly called Clippy), has suddenly re-entered internet culture in 2025.
+					</p>
+					<p class="mb-6">But why is Clippy everywhere again, and why are so many people changing their PFP to a cartoon paperclip?</p>
+					<hr class="border-sky-100 dark:border-sky-800 my-10" />
+					<h2 id="origins" class="scroll-mt-28 group text-2xl sm:text-3xl font-extrabold mb-4">The Origins of the Clippy PFP Movement <a href="#origins" class="opacity-0 group-hover:opacity-100 transition text-sky-500 no-underline">#</a></h2>
+					<p class="mb-5">This modern Clippy revival began with <strong>Louis Rossmann</strong>, a well-known tech YouTuber and leader of the <em>Right to Repair</em> movement.</p>
+					<p class="mb-5">Rossmann is famous for advocating that your devices should be fixable without voiding warranties, but this time, his call to action was different :</p>
+					<div class="rounded-xl mb-2 bg-gradient-to-br from-sky-50 to-cyan-50 dark:from-slate-800 dark:to-slate-700 border border-sky-200/60 dark:border-slate-600 p-5 not-prose shadow-sm">
+						<blockquote class="m-0 text-base sm:text-lg font-medium italic text-sky-800 dark:text-sky-200">“Change your profile picture to Clippy.”</blockquote>
+					</div>
+					<p>In his viral video, Rossmann explained that modern technology has become increasingly <strong>exploitative and invasive</strong>. From AI companies scraping user data to corporations constantly rewriting terms of service after purchases, the digital world feels less like a tool and more like a trap.</p>
+					<p class="mb-5 mt-2">The reason it’s <strong>Clippy</strong> is because, in Rossmann’s words, Clippy was <em>annoying but didn’t mine user data, didn’t spy on users, and came from a version of Microsoft Office that you could buy once and use offline.</em></p>
+					<p class="mb-5">Or as he put it, “Clippy was there to help.”</p>
+					<p>Clippy, on the other hand, represents the opposite of today’s corporate tech culture:</p>
+					<ul class="marker:text-sky-500 dark:marker:text-sky-300">
+						<li><h4>A quirky assistant that was bundled with Microsoft Office (1997–2003).</h4></li>
+						<br />
+						<li>
+							<h4>Sometimes annoying, but always <strong>trying to be helpful.</strong></h4>
+						</li>
+						<li>
+							<h4>Most importantly, Clippy <strong>never sold your data.</strong></h4>
+						</li>
+						<br />
+					</ul>
+					<p>By bringing back Clippy, the movement uses nostalgia and humor to push back against corporate overreach.</p>
+					<hr class="border-sky-100 dark:border-sky-800 my-10" />
+					<h2 id="meme" class="scroll-mt-28 group text-2xl sm:text-3xl font-extrabold mb-4">A Meme With a Message <a href="#meme" class="opacity-0 group-hover:opacity-100 transition text-sky-500 no-underline">#</a></h2>
+					<p>Why are people using a profile picture to protest? What's the overall idea behind it ?</p>
+					<ul class="marker:text-sky-500 dark:marker:text-sky-300">
+						<br />
+						<li>It’s easy to join (just change your profile picture).</li>
+						<li>It creates a sense of belonging to a digital resistance.</li>
+						<li>It spreads quickly (people ask “Why is everyone using Clippy?”).</li>
+						<br />
+					</ul>
+					<p>In short, Clippy has become a <strong>symbol of cultural push back</strong> against exploitative technology.</p>
+					<div class="not-prose my-10 p-5 rounded-xl border border-amber-300/70 dark:border-amber-600 bg-amber-50/70 dark:bg-amber-900/20 text-amber-900 dark:text-amber-200 shadow-sm">
+						<p class="m-0 text-sm sm:text-base"><strong>Note :</strong> Cultural symbols often precede policy change. Visibility → Conversation → Norm Shift → Pressure → Reform.</p>
+					</div>
+					<hr class="border-sky-100 dark:border-sky-800 my-10" />
+					<h2 id="join" class="scroll-mt-28 group text-2xl sm:text-3xl font-extrabold mb-4">Why You Should Join the Clippy Movement <a href="#join" class="opacity-0 group-hover:opacity-100 transition text-sky-500 no-underline">#</a></h2>
+					<p class="mb-5">Changing your profile picture might seem small, but social memes like this have power.</p>
+					<p class="mb-5">As Rossmann points out, before policy change comes <strong>cultural change</strong>.</p>
+					<p class="mb-5">Every time someone sees Clippy pop up on social media, they ask why, and end up discovering the frustrations people have with today’s tech industry.</p>
+					<p class="mb-5">By joining in, you’re part of a larger community that’s using humor and nostalgia to highlight serious issues.</p>
+					<p>Plus, let’s face it: Clippy looks awesome as a PFP.</p>
+					<hr class="border-sky-100 dark:border-sky-800 my-10" />
+					<h2 id="create" class="scroll-mt-28 group text-2xl sm:text-3xl font-extrabold mb-4">Create Your Own Clippy Profile Picture <a href="#create" class="opacity-0 group-hover:opacity-100 transition text-sky-500 no-underline">#</a></h2>
+					<p class="mb-5">Want to join the movement? We built a free tool just for that.</p>
+					<p class="mb-5">With our <a href="./index.html" class="font-semibold text-sky-600 dark:text-sky-400 hover:underline">Clippy PFP Generator</a> you can:</p>
+					<ul class="marker:text-sky-500 dark:marker:text-sky-300">
+						<li>Mix and match different Clippy styles (mouths, eyes, hands, backgrounds, and more)</li>
+						<br />
+						<li>Randomize for fun combinations.</li>
+						<li>Download your unique Clippy PFP instantly.</li>
+					</ul>
+					<br />
+					<p>It only takes a few clicks to make your own and join the thousands of people bringing Clippy back.</p>
+					<hr class="border-sky-100 dark:border-sky-800 my-10" />
+					<h3 id="final-thoughts" class="text-xl sm:text-2xl font-bold mb-4 group">Final Thoughts <a href="#final-thoughts" class="opacity-0 group-hover:opacity-100 transition text-sky-500 no-underline">#</a></h3>
+					<p>By swapping your profile picture to Clippy, you’re adding your voice to a growing cultural movement.</p>
+					<br />
+					<p class="text-lg font-semibold mb-3">So what are you waiting for?</p>
+					<p class="text-lg font-semibold"><a href="./index.html" class="font-bold text-sky-600 dark:text-sky-400 hover:underline">Generate your Clippy PFP now</a> and join the paperclip revolution.</p>
+					<div class="not-prose mt-10 flex flex-wrap gap-3 items-center">
+						<button id="copyLink" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-slate-100 hover:bg-slate-300 dark:hover:bg-slate-600 text-sm font-medium">🔗 Copy Link</button>
+						<a href="./index.html" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold">⚙️ Open Generator</a>
+						<span id="copyStatus" class="text-xs text-slate-500 dark:text-slate-400"></span>
+					</div>
+				</article>
+				<aside class="hidden lg:flex flex-col gap-6 text-sm">
+					<div class="sticky top-28 space-y-6">
+						<nav aria-label="Table of contents" class="bg-white/90 dark:bg-slate-900/90 backdrop-blur rounded-2xl border border-slate-200 dark:border-slate-700 p-5 shadow-lg">
+							<h4 class="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">On this page</h4>
+							<ol id="toc" class="space-y-2 counter-reset list-none m-0 p-0"></ol>
+						</nav>
+						<div class="bg-gradient-to-br from-sky-50 to-cyan-50 dark:from-slate-800 dark:to-slate-700 rounded-2xl border border-sky-200/60 dark:border-slate-600 p-5 shadow-md">
+							<p class="text-xs leading-relaxed"><strong class="block mb-1 text-sky-700 dark:text-sky-300">Clippy Fact :</strong> The assistant used an <em>Actor</em> system with animated sprites keyed off user intent heuristics, primitive compared to today’s ML, yet more respectful of privacy.</p>
+						</div>
+						<div class="text-xs text-slate-500 dark:text-slate-400 flex flex-col gap-1">
+							<span>Not affiliated with Microsoft.</span>
+							<a href="./index.html" class="text-sky-600 dark:text-sky-400 hover:underline">← Back to Generator</a>
+						</div>
+					</div>
+				</aside>
+			</div>
+		</main>
+		<script>
+			// Theme toggle
+			const THEME_KEY = "clippy_theme";
+			const toggle = document.getElementById("themeToggle");
+			function applyTheme(t) {
+				const root = document.documentElement;
+				const isDark = t === "dark" || (t === "auto" && matchMedia("(prefers-color-scheme: dark)").matches);
+				root.classList.toggle("dark", isDark);
+				if (toggle) toggle.textContent = isDark ? "☀️" : "🌙";
+				localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
+			}
+			if (toggle) toggle.addEventListener("click", () => applyTheme(document.documentElement.classList.contains("dark") ? "light" : "dark"));
+			applyTheme(localStorage.getItem(THEME_KEY) || "auto");
+
+			// Table of contents + scroll spy
+			const tocEl = document.getElementById("toc");
+			const headings = Array.from(document.querySelectorAll("article h2, article h3")).filter((h) => h.id);
+			if (tocEl && headings.length) {
+				headings.forEach((h) => {
+					const li = document.createElement("li");
+					li.className = "text-slate-600 dark:text-slate-300 text-xs leading-snug";
+					const a = document.createElement("a");
+					a.href = `#${h.id}`;
+					a.textContent = h.textContent.replace(/\s+#$/, "");
+					a.className = "block px-2 py-1 rounded-md hover:bg-sky-100/70 dark:hover:bg-slate-700/70 hover:text-sky-700 dark:hover:text-sky-200 transition";
+					li.appendChild(a);
+					tocEl.appendChild(li);
+				});
+			}
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						const id = entry.target.id;
+						tocEl?.querySelectorAll("a").forEach((a) => {
+							a.classList.toggle("bg-sky-100/80", a.getAttribute("href") === `#${id}`);
+							a.classList.toggle("text-sky-700", a.getAttribute("href") === `#${id}`);
+							a.classList.toggle("dark:text-sky-200", a.getAttribute("href") === `#${id}`);
+						});
+					}
+				});
+				headings.forEach((h) => observer.observe(h));
+			});
+
+			// Reading time
+			const readingTimeEl = document.getElementById("readingTime");
+			if (readingTimeEl) {
+				const words = document.querySelector("article")?.innerText.trim().split(/\s+/).length || 0;
+				const minutes = Math.max(1, Math.round(words / 220));
+				readingTimeEl.textContent = minutes + " min read";
+			}
+
+			// Progress bar
+			const progressBar = document.getElementById("progressBar");
+			function updateProgress() {
+				const scrollTop = window.scrollY;
+				const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+				const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+				if (progressBar) progressBar.style.width = pct + "%";
+			}
+			window.addEventListener("scroll", updateProgress, { passive: true });
+			updateProgress();
+
+			// Copy link
+			const copyBtn = document.getElementById("copyLink");
+			const copyStatus = document.getElementById("copyStatus");
+			copyBtn?.addEventListener("click", async () => {
+				try {
+					await navigator.clipboard.writeText(location.href);
+					if (copyStatus) {
+						copyStatus.textContent = "Link copied!";
+						setTimeout(() => (copyStatus.textContent = ""), 2500);
+					}
+				} catch (e) {
+					if (copyStatus) {
+						copyStatus.textContent = "Copy failed";
+						setTimeout(() => (copyStatus.textContent = ""), 2500);
+					}
+				}
+			});
+		</script>
+	</body>
+</html>
