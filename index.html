@@ -87,7 +87,7 @@
 							<!-- Canvas Header -->
 							<div class="bg-gradient-to-r from-sky-50 to-cyan-50 dark:from-slate-800 dark:to-slate-700 px-6 py-4 border-b border-slate-200 dark:border-slate-700">
 								<h3 class="font-bold text-lg text-slate-800 dark:text-slate-200 flex items-center gap-2">
-									<span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+									<span class="w-2 h-2 bg-green-500 rounded-full"></span>
 									Live Preview
 								</h3>
 								<p class="text-sm text-slate-600 dark:text-slate-400 mt-1">512×512 PNG • Layers stacked in order</p>
@@ -98,7 +98,7 @@
 								<div class="flex flex-wrap justify-center gap-3 w-full">
 									<button id="randomize" class="group inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold bg-gradient-to-r from-sky-600 to-sky-500 text-white hover:from-sky-500 hover:to-sky-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"><span class="group-hover:animate-spin">🎲</span><span>Randomize</span></button>
 									<button id="clear" class="inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold bg-slate-100 text-slate-800 hover:bg-slate-200 dark:bg-slate-700 dark:text-slate-100 dark:hover:bg-slate-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-slate-400 shadow-md hover:shadow-lg transform hover:scale-105 transition-all duration-200">🗑️ <span>Reset</span></button>
-									<button id="download" class="group inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold bg-gradient-to-r from-cyan-600 to-cyan-500 text-white hover:from-cyan-500 hover:to-cyan-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"><span class="group-hover:animate-bounce">⬇️</span><span>Download</span></button>
+									<button id="download" class="group inline-flex items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold bg-gradient-to-r from-cyan-600 to-cyan-500 text-white hover:from-cyan-500 hover:to-cyan-400 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"><span>⬇️</span><span>Download</span></button>
 								</div>
 							</div>
 						</div>
@@ -145,7 +145,7 @@
 			<section class="rounded-3xl bg-gradient-to-br from-violet-50 to-purple-50 dark:from-slate-800/80 dark:to-slate-700/80 border border-violet-200 dark:border-slate-600 shadow-xl p-8 flex flex-col gap-6 mt-8">
 				<div class="text-center">
 					<h3 class="mx-2 sm:mx-6 text-lg sm:text-xl md:text-2xl font-black text-violet-900 dark:text-violet-200 mb-3 flex items-center justify-center gap-2 sm:gap-3">
-						<span class="animate-bounce">🤔</span>
+						<span>🤔</span>
 						<span>Why is everyone changing their profile picture to Clippy and why you should too!</span>
 					</h3>
 				</div>
@@ -236,7 +236,6 @@
 						btn.dataset.folder = f;
 						const emoji = document.createElement("span");
 						emoji.textContent = emojiMap[f];
-						emoji.className = active ? "animate-pulse" : "group-hover:animate-bounce";
 						const label = document.createElement("span");
 						label.textContent = f.charAt(0).toUpperCase() + f.slice(1);
 						btn.append(emoji, label);
@@ -323,8 +322,6 @@
 						const active = tab.dataset.folder === folder;
 						tab.setAttribute("aria-selected", active);
 						tab.className = tabClass(tab.dataset.folder, active);
-						const emoji = tab.querySelector("span");
-						if (emoji) emoji.className = active ? "animate-pulse" : "group-hover:animate-bounce";
 					});
 					document.querySelectorAll('[role="tabpanel"]').forEach((panel) => {
 						const wrap = panel.parentElement;
